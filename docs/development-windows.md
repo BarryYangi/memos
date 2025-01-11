@@ -1,4 +1,4 @@
-# Development
+# Development in Windows
 
 Memos is built with a curated tech stack. It is optimized for developer experience and is very easy to start working on the code:
 
@@ -8,7 +8,7 @@ Memos is built with a curated tech stack. It is optimized for developer experien
 
 ## Tech Stack
 
-|                 Frontend                 |              Backend              |
+| Frontend                                 | Backend                           |
 | ---------------------------------------- | --------------------------------- |
 | [React](https://react.dev/)              | [Go](https://go.dev/)             |
 | [Tailwind CSS](https://tailwindcss.com/) | [SQLite](https://www.sqlite.org/) |
@@ -56,12 +56,12 @@ Memos should now be running at [http://localhost:3001](http://localhost:3001) an
 
 ## Building
 
-Frontend must be built before backend. The built frontend must be placed in the backend ./server/dist directory. Otherwise, you will get a "No frontend embeded" error.
+Frontend must be built before backend. The built frontend must be placed in the backend ./server/frontend/dist directory. Otherwise, you will get a "No frontend embedded" error.
 
 ### Frontend
 
 ```powershell
-Move-Item "./server/dist" "./server/dist.bak"
+Move-Item "./server/frontend/dist" "./server/frontend/dist.bak"
 cd web; pnpm i --frozen-lockfile; pnpm build; cd ..;
 Move-Item "./web/dist" "./server/" -Force
 ```
@@ -69,22 +69,22 @@ Move-Item "./web/dist" "./server/" -Force
 ### Backend
 
 ```powershell
-go build -o ./build/memos.exe ./main.go
+go build -o ./build/memos.exe ./bin/memos/main.go
 ```
 
 ## ❕ Notes
 
 - Start development servers easier by running the provided `start.ps1` script.
-This will start both backend and frontend in detached PowerShell windows:
+  This will start both backend and frontend in detached PowerShell windows:
 
-   ```powershell
-   .\scripts\start.ps1
-   ```
+  ```powershell
+  .\scripts\start.ps1
+  ```
 
 - Produce a local build easier using the provided `build.ps1` script to build both frontend and backend:
 
-   ```powershell
-   .\scripts\build.ps1
-   ```
+  ```powershell
+  .\scripts\build.ps1
+  ```
 
-   This will produce a memos.exe file in the ./build directory.
+  This will produce a memos.exe file in the ./build directory.
